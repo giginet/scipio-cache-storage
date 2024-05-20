@@ -13,7 +13,7 @@ I'll show you the structure of the packages.
 
 ### Before
 
-```marmeid
+```mermaid
 classDiagram
     object SwiftPM {
     }
@@ -33,7 +33,7 @@ Additionally, it's difficult to make the other storage plugin.
 
 ### After
 
-```marmeid
+```mermaid
 classDiagram
     object SwiftPM
 
