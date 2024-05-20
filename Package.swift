@@ -5,6 +5,9 @@ import PackageDescription
 
 let package = Package(
     name: "scipio-cache-storage",
+    platforms: [
+        .macOS(.v13),
+    ],
     products: [
         .library(
             name: "ScipioStorage",

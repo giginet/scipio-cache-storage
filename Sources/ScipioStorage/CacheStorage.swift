@@ -1,4 +1,11 @@
 import Foundation
+import CryptoKit
+
+private let jsonEncoder = {
+    let encoder = JSONEncoder()
+    encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+    return encoder
+}()
 
 public protocol CacheStorage {
     func existsValidCache(for cacheKey: some CacheKey) async throws -> Bool
@@ -14,6 +21,15 @@ public protocol CacheKey: Hashable, Codable, Equatable {
 extension CacheKey {
     public var frameworkName: String {
         "\(targetName.packageNamed()).xcframework"
+    }
+}
+
+extension CacheKey {
+    public func calculateChecksum() throws -> String {
+        let data = try jsonEncoder.encode(self)
+        return SHA256.hash(data: data)
+            .map { String(format: "%02hhx", $0) }
+            .joined()
     }
 }
 
