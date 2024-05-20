@@ -49,8 +49,10 @@ classDiagram
     ScipioCacheStorage <|-- ScipioS3Storage
     ScipioCacheStorage <|-- ScipioAzureStorage
     ScipioCacheStorage <|-- ScipioFileServerStorage
-    executor <|-- ScipioKit
-    executor <|.. ScipioS3Storage
+    ScipioKit <|-- executor
+    ScipioS3Storage <|.. executor
+    ScipioAzureStorage <|.. executor
+    ScipioFileServerStorage <|.. executor
 ```
 
 `ScipioCacheStorage`helps us to maintain the versioning. It can keep a fewer effort the version management.
