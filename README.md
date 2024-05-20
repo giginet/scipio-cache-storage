@@ -15,14 +15,11 @@ I'll show you the structure of the packages.
 
 ```mermaid
 classDiagram
-    object SwiftPM {
-    }
+    object SwiftPM
 
-    object ScipioKit {
-    }
+    object ScipioKit
 
-    object ScipioS3Storage {
-    }
+    object ScipioS3Storage
 
     SwiftPM <|-- ScipioKit
     ScipioKit <|-- ScipioS3Storage
