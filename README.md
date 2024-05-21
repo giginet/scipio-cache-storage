@@ -21,8 +21,12 @@ classDiagram
 
     object ScipioS3Storage
 
+    object executor
+
     SwiftPM <|-- ScipioKit
     ScipioKit <|-- ScipioS3Storage
+    ScipioKit <|-- executor
+    ScipioS3Storage <|.. executor
 ```
 
 In this structure, SwiftPM can't resolve versions of `swift-package-manager`, so all packages must specify the same version at all. It's unuseful to maintain the packages.
