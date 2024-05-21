@@ -7,14 +7,14 @@ private let jsonEncoder = {
     return encoder
 }()
 
-public protocol CacheStorage {
+public protocol CacheStorage: Sendable {
     func existsValidCache(for cacheKey: some CacheKey) async throws -> Bool
     func fetchArtifacts(for cacheKey: some CacheKey, to destinationDir: URL) async throws
     func cacheFramework(_ frameworkPath: URL, for cacheKey: some CacheKey) async throws
     var parallelNumber: Int? { get }
 }
 
-public protocol CacheKey: Hashable, Codable, Equatable {
+public protocol CacheKey: Hashable, Codable, Equatable, Sendable {
     var targetName: String { get }
 }
 
